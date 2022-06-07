@@ -1,4 +1,4 @@
-const { equal, ok } = require('assert')
+const { equal, ok, deepEqual } = require('assert')
 
 describe('game of life', () => {
   const gameOfLife = require('..')
@@ -18,6 +18,22 @@ describe('game of life', () => {
       const grid = gameOfLife.aGrid(3, 3)
       const count = grid.getCountOfDeadCells()
       equal(count, 9)
+    })
+
+    it("should return 1x1 grid", () => {
+      const grid = gameOfLife.aGrid(1, 1)
+      const printedGrid = grid.print()
+      deepEqual(printedGrid, [[false]])
+    })
+
+    it("should return 2x2 grid", () => {
+      const grid = gameOfLife.aGrid(2, 2)
+      const printedGrid = grid.print()
+      const expectedGrid = [
+        [false, false],
+        [false, false],
+      ]
+      deepEqual(printedGrid,expectedGrid )
     })
   })
 })
