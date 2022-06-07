@@ -11,3 +11,7 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 The code should allow for the board/world to be created with a valid initial state, or a randomly generated state.
 
 ![rules](https://kata-log.rocks/images/game_of_life_text.jpg) ![tick](https://kata-log.rocks/images/game_of_life_graphic.jpg)
+
+
+- tutte le celle al di fuori dalla griglia le possiamo considerare morte
+- la dimensione della griglia non cambia durante le generazioni
