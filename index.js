@@ -13,19 +13,15 @@ class Grid {
   }
 
   getCountOfDeadCells () {
-    let count = 0
-    for (let i = 0; i < this.grid.length; i++) {
-      for (let j = 0; j < this.grid[i].length; j++) {
-        if (this.grid[i][j] === false) {
-          count++
-        }
-      }
-    }
-    return count 
+    return this.grid.flat().filter(cell => cell === false).length
   }
 
   print() {
     return this.grid 
+  }
+
+  liveAt(row, column){
+    this.grid[row-1][column-1] = true
   }
 }
 

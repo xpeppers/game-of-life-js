@@ -35,5 +35,12 @@ describe('game of life', () => {
       ]
       deepEqual(printedGrid,expectedGrid )
     })
+
+    it('should create a live cell', ()=> {
+      const grid = gameOfLife.aGrid(1,1)
+      grid.liveAt(1,1)
+      const count = grid.getCountOfDeadCells()
+      equal(count,0)
+    })
   })
 })
