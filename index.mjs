@@ -1,32 +1,28 @@
 export class Grid {
-
   constructor (grid) {
-     
     this.grid = grid
-
   }
 
   getCountOfDeadCells () {
     return this.grid.flat().filter(cell => cell === false).length
   }
 
-  print() {
-    return this.grid 
+  print () {
+    return this.grid
   }
 
-  liveAt(row, column){
-    this.grid[row-1][column-1] = true
+  liveAt (row, column) {
+    this.grid[row - 1][column - 1] = true
   }
 }
 
 export function aGrid (rows, cols) {
-  const grid = [] 
-
+  const grid = []
 
   for (let i = 0; i < rows; i++) {
     grid[i] = []
     for (let j = 0; j < cols; j++) {
-      grid[i][j] = false 
+      grid[i][j] = false
     }
   }
 
