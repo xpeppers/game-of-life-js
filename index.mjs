@@ -1,4 +1,4 @@
-class Grid {
+export class Grid {
 
   constructor (grid) {
      
@@ -19,7 +19,7 @@ class Grid {
   }
 }
 
-exports.aGrid = function aGrid (rows, cols) {
+export function aGrid (rows, cols) {
   const grid = [] 
 
 
