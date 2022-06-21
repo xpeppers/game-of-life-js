@@ -14,6 +14,20 @@ export class Grid {
   liveAt (row, column) {
     this.grid[row - 1][column - 1] = true
   }
+
+  getAliveNeighborsFor (x, y) {
+    const isAlive = cell => cell === true
+    return [
+      this.grid[x - 1]?.[y - 1],
+      this.grid[x - 1]?.[y],
+      this.grid[x - 1]?.[y + 1],
+      this.grid[x]?.[y - 1],
+      this.grid[x]?.[y + 1],
+      this.grid[x + 1]?.[y - 1],
+      this.grid[x + 1]?.[y],
+      this.grid[x + 1]?.[y + 1]
+    ].filter(isAlive).length
+  }
 }
 
 export function aGrid (rows, cols) {
