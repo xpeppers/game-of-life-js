@@ -42,5 +42,6 @@ describe('game of life', () => {
       const count = grid.getCountOfDeadCells()
       equal(count,0)
     })
+
   })
 })

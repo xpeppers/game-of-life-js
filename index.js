@@ -1,14 +1,8 @@
 class Grid {
-  constructor (rows, cols) {
-     
-    this.grid = [] 
 
-    for (let i = 0; i < rows; i++) {
-      this.grid[i] = []
-      for (let j = 0; j < cols; j++) {
-        this.grid[i][j] = false 
-      }
-    }
+  constructor (grid) {
+     
+    this.grid = grid
 
   }
 
@@ -26,5 +20,15 @@ class Grid {
 }
 
 exports.aGrid = function aGrid (rows, cols) {
-  return new Grid(rows, cols)
+  const grid = [] 
+
+
+  for (let i = 0; i < rows; i++) {
+    grid[i] = []
+    for (let j = 0; j < cols; j++) {
+      grid[i][j] = false 
+    }
+  }
+
+  return new Grid(grid)
 }
