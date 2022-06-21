@@ -8,6 +8,8 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 1. Any live cell with more than three live neighbours dies (referred to as overpopulation or overcrowding).
 1. Any live cell with two or three live neighbours lives, unchanged, to the next generation.
 1. Any dead cell with exactly three live neighbours will come to life.
+
+
 The code should allow for the board/world to be created with a valid initial state, or a randomly generated state.
 
 ![rules](https://kata-log.rocks/images/game_of_life_text.jpg) ![tick](https://kata-log.rocks/images/game_of_life_graphic.jpg)
