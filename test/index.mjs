@@ -84,5 +84,19 @@ describe('game of life', () => {
         equal(count, 3)
       })
     })
+    describe('undepopulation',()=>{
+
+      it('a live cell with fewer than two live neighbours dies ',()=>{
+        const grid = new Grid([
+          [false, true],
+          [false, true]  
+        ])
+        const nextGrid = grid.nextGeneration()
+        deepEqual(nextGrid, [
+          [false, false],
+          [false, false]
+        ])
+      })
+    })
   })
 })

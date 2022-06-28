@@ -28,6 +28,25 @@ export class Grid {
       this.grid[x + 1]?.[y + 1]
     ].filter(isAlive).length
   }
+
+  nextGeneration(){
+    this.grid.forEach((row, rowIndex) => {
+      row.forEach((cell, columIndex) => {
+
+        if(this.#underpopulationAt(rowIndex,columIndex)){
+          this.grid[rowIndex][columIndex] = false
+        }
+
+      });
+    });
+    
+    return this.grid
+  }
+
+  #underpopulationAt(x,y){
+    return this.grid[x,y] && this.getAliveNeighborsFor(x, y) < 2
+  }
+
 }
 
 export function aGrid (rows, cols) {
