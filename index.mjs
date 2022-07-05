@@ -3,16 +3,8 @@ export class Grid {
     this.grid = grid
   }
 
-  getCountOfDeadCells () {
-    return this.grid.flat().filter(cell => cell === false).length
-  }
-
   get () {
     return this.grid
-  }
-
-  liveAt (row, column) {
-    this.grid[row - 1][column - 1] = true
   }
 
   getAliveNeighborsFor (x, y) {
@@ -29,20 +21,20 @@ export class Grid {
     ].filter(isAlive).length
   }
 
-  evolve() {
+  evolve () {
     this.grid.forEach((row, rowIndex) => {
       row.forEach((cell, columIndex) => {
 
-        if(this.#underpopulationAt(rowIndex,columIndex)){
+        if (this.#underpopulationAt(rowIndex, columIndex)) {
           this.grid[rowIndex][columIndex] = false
         }
 
-      });
-    });
+      })
+    })
   }
 
-  #underpopulationAt(x,y){
-    return this.grid[x,y] && this.getAliveNeighborsFor(x, y) < 2
+  #underpopulationAt (x, y) {
+    return this.grid[x, y] && this.getAliveNeighborsFor(x, y) < 2
   }
 
 }
