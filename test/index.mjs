@@ -1,4 +1,4 @@
-import { Grid, aGrid } from '../index.mjs'
+import { Grid } from '../index.mjs'
 import { equal, ok, deepEqual } from 'assert'
 
 describe('game of life', () => {
@@ -21,13 +21,13 @@ describe('game of life', () => {
 
     it('should return 1x1 grid', () => {
       const grid = aGrid(1, 1)
-      const printedGrid = grid.print()
+      const printedGrid = grid.get()
       deepEqual(printedGrid, [[false]])
     })
 
     it('should return 2x2 grid', () => {
       const grid = aGrid(2, 2)
-      const printedGrid = grid.print()
+      const printedGrid = grid.get()
       const expectedGrid = [
         [false, false],
         [false, false]
@@ -45,7 +45,7 @@ describe('game of life', () => {
     describe('#constructor', () => {
       it('returns same generation', () => {
         const grid = new Grid([[true]])
-        const nextGeneration = grid.print()
+        const nextGeneration = grid.get()
         deepEqual(nextGeneration, [[true]])
       })
     })
@@ -92,9 +92,9 @@ describe('game of life', () => {
           [false, false]  
         ])
 
-        const nextGrid = grid.nextGeneration()
+        grid.evolve()
 
-        deepEqual(nextGrid, [
+        deepEqual(grid.get(), [
           [false, false],
           [false, false]
         ])
@@ -106,9 +106,9 @@ describe('game of life', () => {
           [false, false]  
         ])
 
-        const nextGrid = grid.nextGeneration()
+        grid.evolve()
 
-        deepEqual(nextGrid, [
+        deepEqual(grid.get(), [
           [false, false],
           [false, false]
         ])
@@ -120,9 +120,9 @@ describe('game of life', () => {
           [false, true]  
         ])
 
-        const nextGrid = grid.nextGeneration()
+        grid.evolve()
 
-        deepEqual(nextGrid, [
+        deepEqual(grid.get(), [
           [false, false],
           [false, false]
         ])
@@ -130,3 +130,16 @@ describe('game of life', () => {
     })
   })
 })
+
+function aGrid (rows, cols) {
+  const grid = []
+
+  for (let i = 0; i < rows; i++) {
+    grid[i] = []
+    for (let j = 0; j < cols; j++) {
+      grid[i][j] = false
+    }
+  }
+
+  return new Grid(grid)
+}

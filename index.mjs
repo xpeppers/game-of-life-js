@@ -7,7 +7,7 @@ export class Grid {
     return this.grid.flat().filter(cell => cell === false).length
   }
 
-  print () {
+  get () {
     return this.grid
   }
 
@@ -29,7 +29,7 @@ export class Grid {
     ].filter(isAlive).length
   }
 
-  nextGeneration(){
+  evolve() {
     this.grid.forEach((row, rowIndex) => {
       row.forEach((cell, columIndex) => {
 
@@ -39,25 +39,10 @@ export class Grid {
 
       });
     });
-    
-    return this.grid
   }
 
   #underpopulationAt(x,y){
     return this.grid[x,y] && this.getAliveNeighborsFor(x, y) < 2
   }
 
-}
-
-export function aGrid (rows, cols) {
-  const grid = []
-
-  for (let i = 0; i < rows; i++) {
-    grid[i] = []
-    for (let j = 0; j < cols; j++) {
-      grid[i][j] = false
-    }
-  }
-
-  return new Grid(grid)
 }
