@@ -1,6 +1,5 @@
 import { Grid, aGrid } from '../index.mjs'
 import { equal, ok, deepEqual } from 'assert'
-import { clearLine } from 'readline'
 
 describe('game of life', () => {
   describe('grid', () => {
@@ -84,14 +83,45 @@ describe('game of life', () => {
         equal(count, 3)
       })
     })
+
     describe('undepopulation',()=>{
+
+      it('when there is nothin alive, nothing happen',()=>{
+        const grid = new Grid([
+          [false, false],
+          [false, false]  
+        ])
+
+        const nextGrid = grid.nextGeneration()
+
+        deepEqual(nextGrid, [
+          [false, false],
+          [false, false]
+        ])
+      })
+
+      it('a single cell dies with no neighbours',()=>{
+        const grid = new Grid([
+          [true, false],
+          [false, false]  
+        ])
+
+        const nextGrid = grid.nextGeneration()
+
+        deepEqual(nextGrid, [
+          [false, false],
+          [false, false]
+        ])
+      })
 
       it('a live cell with fewer than two live neighbours dies ',()=>{
         const grid = new Grid([
           [false, true],
           [false, true]  
         ])
+
         const nextGrid = grid.nextGeneration()
+
         deepEqual(nextGrid, [
           [false, false],
           [false, false]
