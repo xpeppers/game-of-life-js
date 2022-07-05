@@ -1,31 +1,11 @@
 import { Grid } from '../index.mjs'
-import { equal, ok, deepEqual } from 'assert'
+import { equal, deepEqual } from 'assert'
 
-describe('game of life', () => {
-  describe('grid', () => {
-    it('should be available', () => {
-      ok(aGrid)
-    })
+describe('Game of Life', () => {
 
-    it('should create a grid of 2x2', () => {
-      const grid = aGrid(2, 2)
-      const count = grid.getCountOfDeadCells()
-      equal(count, 4)
-    })
+  describe('Grid', () => {
 
-    it('should create a grid of 3x3', () => {
-      const grid = aGrid(3, 3)
-      const count = grid.getCountOfDeadCells()
-      equal(count, 9)
-    })
-
-    it('should return 1x1 grid', () => {
-      const grid = aGrid(1, 1)
-      const printedGrid = grid.get()
-      deepEqual(printedGrid, [[false]])
-    })
-
-    it('should return 2x2 grid', () => {
+    it('should initialize an empty grid and print it correctly', () => {
       const grid = aGrid(2, 2)
       const printedGrid = grid.get()
       const expectedGrid = [
