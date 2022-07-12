@@ -91,4 +91,24 @@ describe('Game of Life', () => {
       ])
     })
   })
+
+  describe('Overpopulation',() => {
+
+    it('a live cell with more then three live neighbours dies', () => {
+      const grid = new Grid([
+        [true, true],
+        [true, true],
+        [true, false]
+      ])
+
+      grid.evolve()
+
+      deepEqual(grid.get(), [
+        [true, true],
+        [false, false],
+        [true, false]
+      ])
+    })
+  })
+
 })

@@ -22,15 +22,30 @@ export class Grid {
   }
 
   evolve () {
+
+    let newGrid = Array(this.grid.length).fill(false).map(()=>Array(this.grid[0].length).fill(false))
+
     this.grid.forEach((row, rowIndex) => {
       row.forEach((cell, columIndex) => {
 
-        if (this.#underpopulationAt(rowIndex, columIndex)) {
-          this.grid[rowIndex][columIndex] = false
+        if (this.#shouldDie(rowIndex, columIndex)) {
+          newGrid[rowIndex][columIndex] = false
+        } else {
+          newGrid[rowIndex][columIndex] = this.grid[rowIndex][columIndex]
         }
 
       })
     })
+
+    this.grid = newGrid
+  }
+
+  #shouldDie(rowIndex, columIndex) {
+    return this.#underpopulationAt(rowIndex, columIndex) || this.#overpopulation(rowIndex, columIndex);
+  }
+
+  #overpopulation(x, y) {
+    return this.grid[x, y] && this.getAliveNeighborsFor(x, y) > 3;
   }
 
   #underpopulationAt (x, y) {
