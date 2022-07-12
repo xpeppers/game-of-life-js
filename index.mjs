@@ -29,6 +29,10 @@ export class Grid {
                 if (this.#shouldDie(rowIndex, columIndex)) {
                     newGrid[rowIndex][columIndex] = false
                 }
+
+                if (this.getAliveNeighborsFor(rowIndex, columIndex) === 3) {
+                    newGrid[rowIndex][columIndex] = true
+                }
             })
         })
 

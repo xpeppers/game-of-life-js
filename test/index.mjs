@@ -94,7 +94,7 @@ describe("Game of Life", () => {
             const grid = new Grid([
                 [true, true],
                 [true, true],
-                [true, false],
+                [true, true],
             ])
 
             grid.evolve()
@@ -102,7 +102,7 @@ describe("Game of Life", () => {
             deepEqual(grid.get(), [
                 [true, true],
                 [false, false],
-                [true, false],
+                [true, true],
             ])
         })
     })
@@ -111,6 +111,22 @@ describe("Game of Life", () => {
         it("a live cell with two or three live neighbours lives", () => {
             const grid = new Grid([
                 [true, true],
+                [true, true],
+            ])
+
+            grid.evolve()
+
+            deepEqual(grid.get(), [
+                [true, true],
+                [true, true],
+            ])
+        })
+    })
+
+    describe("Resurrection", () => {
+        it("a dead cell with exactly three live neighbours will come to life", () => {
+            const grid = new Grid([
+                [false, true],
                 [true, true],
             ])
 

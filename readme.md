@@ -6,7 +6,7 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 
 1. ~~Any live cell with fewer than two live neighbours dies (referred to as underpopulation or exposure).~~
 1. ~~Any live cell with more than three live neighbours dies (referred to as overpopulation or overcrowding).~~
-1. Any live cell with two or three live neighbours lives, unchanged, to the next generation.
+1. ~~Any live cell with two or three live neighbours lives, unchanged, to the next generation.~~
 1. Any dead cell with exactly three live neighbours will come to life.
 
 
